@@ -1,10 +1,9 @@
 import React from 'react'
-import { Background } from './styles'
 
 function Home() {
   return (
     <>
-      <Background>teste</Background>
+      <p>home</p>
     </>
   )
 }

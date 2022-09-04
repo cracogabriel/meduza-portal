@@ -1,7 +1,12 @@
 import React from 'react'
+import { Background } from './styles'
 
 function Login() {
-  return <div>login</div>
+  return (
+    <>
+      <Background></Background>
+    </>
+  )
 }
 
 export default Login
