@@ -1,4 +1,15 @@
-*, *::before, *::after {
+import { createGlobalStyle } from 'styled-components'
+import { Ubuntu400 } from './Fonts'
+
+const GlobalStyle = createGlobalStyle`
+  
+  ${Ubuntu400}
+
+  body {
+    font: 1rem Ubuntu400, sans-serif;
+  }
+  
+  *, *::before, *::after {
     box-sizing: border-box;
   }
   * {
@@ -24,3 +35,6 @@
   #root, #__next {
     isolation: isolate;
   }
+  `
+
+export default GlobalStyle
