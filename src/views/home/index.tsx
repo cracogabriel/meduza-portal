@@ -1,14 +1,20 @@
 import axios from 'axios'
 import React, { useCallback, useEffect, useState } from 'react'
+import { Member } from '../../types/GymData'
+import Header from './components/header'
+import Sidebar from './components/sidebar'
+import { HomeBackground, HomeContainer } from './style'
 
 function Home() {
   const [loading, setLoading] = useState(true)
-  const [data, setData] = useState()
+  const [members, setMembers] = useState<Member[]>([])
+
   const handleUserData = useCallback(async () => {
     try {
       setLoading(true)
-      const response = await axios.get('any_url')
-      console.log(response)
+      const response = await axios.get('http://26.181.166.34:8080/api/v1/gym/1')
+      setMembers(response.data)
+      console.log(response.data)
     } catch (error) {
       console.error(error)
     } finally {
@@ -24,7 +30,14 @@ function Home() {
     return <>carregando...</>
   }
 
-  return <>Home page with axios</>
+  return (
+    <HomeContainer>
+      <HomeBackground>
+        <Sidebar />
+        <Header />
+      </HomeBackground>
+    </HomeContainer>
+  )
 }
 
 export default Home
