@@ -1,11 +1,17 @@
 import React from 'react'
-import { HeaderContainer } from './style'
+import { HeaderButton, HeaderContainer, HeaderTitle } from './style'
 
-function Header() {
+type Props = {
+  title: string
+}
+
+function Header(props: Props) {
+  const { title } = props
+
   return (
     <HeaderContainer>
-      <p>teste</p>
-      <button>teste</button>
+      <HeaderTitle>{title}</HeaderTitle>
+      <HeaderButton>cadastrar aluno</HeaderButton>
     </HeaderContainer>
   )
 }

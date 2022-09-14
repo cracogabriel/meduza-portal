@@ -34,7 +34,7 @@ function Home() {
     <HomeContainer>
       <HomeBackground>
         <Sidebar />
-        <Header />
+        <Header title={'academia dos frango'} />
       </HomeBackground>
     </HomeContainer>
   )

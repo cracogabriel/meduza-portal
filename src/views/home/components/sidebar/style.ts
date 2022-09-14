@@ -2,12 +2,13 @@ import styled from 'styled-components'
 
 export const SidebarContainer = styled.div`
   display: flex;
-  width: 45px;
+  min-width: 45px;
   height: 100vh;
   background: #515151;
   justify-content: space-between;
   flex-direction: column;
   align-items: center;
+  height: 100vh;
 `
 
 type SidebarImageProps = {
