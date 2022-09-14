@@ -1,13 +1,36 @@
 import { css } from 'styled-components'
 
-export const YuseiMagic400 = css`
+const YuseiMagic400 = css`
   @import url('https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap');
 `
 
-export const Ubuntu400 = css`
+const Ubuntu400 = css`
   @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
 `
 
-export const Ubuntu700 = css`
+const Ubuntu700 = css`
   @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@700&display=swap');
+`
+
+export const MainFontFace = css`
+  @font-face {
+    font-family: 'YuseiMagic';
+    font-weight: 400;
+    font-style: normal;
+    src: url('${YuseiMagic400}');
+  }
+
+  @font-face {
+    font-family: 'Ubuntu';
+    font-weight: 400;
+    font-style: normal;
+    src: url('${Ubuntu400}');
+  }
+
+  @font-face {
+    font-family: 'Ubuntu';
+    font-weight: 700;
+    font-style: normal;
+    src: url('${Ubuntu700}');
+  }
 `

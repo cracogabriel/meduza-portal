@@ -1,12 +1,26 @@
 import { createGlobalStyle } from 'styled-components'
-import { Ubuntu400 } from './Fonts'
+import { MainFontFace } from './Fonts'
+
+export const breakpoints = {
+  xs: 576,
+  mobile: 760,
+  sm: 768,
+  md: 1024,
+  lg: 1200,
+  xl: 1400,
+}
+
+export var isMobile = window.innerWidth <= breakpoints.mobile
+
+export const isMobileMediaQuery = `@media screen and (max-width: ${breakpoints.mobile}px)`
+export const notMobileMediaQuery = `@media screen and (min-width: ${breakpoints.mobile + 1}px)`
 
 const GlobalStyle = createGlobalStyle`
   
-  ${Ubuntu400}
+  ${MainFontFace}
 
   body {
-    font: 1rem Ubuntu400, sans-serif;
+    font-family: "Ubuntu", sans-serif
   }
   
   *, *::before, *::after {
