@@ -13,8 +13,8 @@ type Props = {
 
 function TableData(props: Props) {
   const { isSelected } = props
-  const personIcon = require('../../../../../../assets/personIcon.png')
-  const arrowIcon = require('../../../../../../assets/arrowIcon.png')
+  const personIcon = require('../../../../../../assets/images/personIcon.png')
+  const arrowIcon = require('../../../../../../assets/images/arrowIcon.png')
 
   return (
     <TableDataContainer isSelected={isSelected}>

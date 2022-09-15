@@ -2,8 +2,8 @@ import React from 'react'
 import { SidebarContainer, SidebarImage } from './style'
 
 function Sidebar() {
-  const meduzaLogo = require('../../../../assets/meduzaLogo.png')
-  const leaveIcon = require('../../../../assets/leaveIcon.png')
+  const meduzaLogo = require('../../../../assets/images/meduzaLogo.png')
+  const leaveIcon = require('../../../../assets/images/leaveIcon.png')
 
   return (
     <SidebarContainer>

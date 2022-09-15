@@ -20,7 +20,7 @@ const GlobalStyle = createGlobalStyle`
   ${MainFontFace}
 
   body {
-    font-family: "Ubuntu", sans-serif
+    font-family: "Graphik", sans-serif
     
   }
   

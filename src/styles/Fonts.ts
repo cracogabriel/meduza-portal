@@ -1,4 +1,14 @@
 import { css } from 'styled-components'
+import {
+  DMSerifDisplayItalic,
+  DMSerifDisplayRegular,
+  GraphikBold,
+  GraphikMedium,
+  GraphikRegular,
+  SackersGothicStdHeavy,
+  SackersGothicStdLight,
+  SackersGothicStdMedium,
+} from '../assets/fonts'
 
 const YuseiMagic400 = css`
   @import url('https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap');
@@ -32,5 +42,56 @@ export const MainFontFace = css`
     font-weight: 700;
     font-style: normal;
     src: url('${Ubuntu700}');
+  }
+
+  @font-face {
+    font-family: 'DMSerifDisplay';
+    font-weight: normal;
+    font-style: normal;
+    src: url('${DMSerifDisplayRegular}');
+  }
+  @font-face {
+    font-family: 'DMSerifDisplay';
+    font-weight: normal;
+    font-style: italic;
+    src: url('${DMSerifDisplayItalic}');
+  }
+
+  @font-face {
+    font-family: 'SackersGothicStd';
+    font-weight: 100;
+    font-style: normal;
+    src: url('${SackersGothicStdLight}');
+  }
+  @font-face {
+    font-family: 'SackersGothicStd';
+    font-weight: normal;
+    font-style: normal;
+    src: url('${SackersGothicStdMedium}');
+  }
+  @font-face {
+    font-family: 'SackersGothicStd';
+    font-weight: 700;
+    font-style: normal;
+    src: url('${SackersGothicStdHeavy}');
+  }
+
+  @font-face {
+    font-family: 'Graphik';
+    font-weight: normal;
+    font-style: normal;
+    src: url('${GraphikRegular}');
+  }
+  @font-face {
+    font-family: 'Graphik';
+    font-weight: 600;
+    font-style: normal;
+    src: url('${GraphikMedium}');
+  }
+  @font-face {
+    font-family: 'Graphik';
+    font-weight: 700;
+    font-style: normal;
+    src: url('${GraphikBold}');
   }
 `

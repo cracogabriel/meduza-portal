@@ -13,9 +13,11 @@ export const HeaderContainer = styled.div`
 export const HeaderTitle = styled.p`
   font-style: normal;
   font-weight: 400;
-  font-size: 22px;
+  font-size: 26px;
   line-height: 25px;
   color: #202020;
+  font-family: 'SackersGothicStd';
+  font-weight: 100;
 `
 
 export const HeaderButton = styled.button`
