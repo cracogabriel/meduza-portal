@@ -21,10 +21,12 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: "Ubuntu", sans-serif
+    
   }
   
   *, *::before, *::after {
     box-sizing: border-box;
+
   }
   * {
     margin: 0;
