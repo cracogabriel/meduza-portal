@@ -5,7 +5,7 @@ import { TableContainer } from './style'
 function Table() {
   return (
     <TableContainer>
-      <TableData key={'1'} />
+      <TableData key={'1'} isSelected />
       <TableData key={'12'} />
       <TableData key={'13'} />
       <TableData key={'14'} />

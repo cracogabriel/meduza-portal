@@ -1,6 +1,20 @@
 import styled from 'styled-components'
 
-export const TableDataContainer = styled.div`
+type TableDataContainerProps = {
+  isSelected?: boolean
+}
+
+type TableDataTextProps = {
+  fontSize: number
+}
+
+type TableDataIconProps = {
+  width: number
+  height: number
+  margin?: string
+}
+
+export const TableDataContainer = styled.div<TableDataContainerProps>`
   display: flex;
   background: #fbfbfb;
   border-radius: 10px;
@@ -17,16 +31,14 @@ export const TableDataContainer = styled.div`
   &:last-child {
     margin-bottom: 20px;
   }
-`
 
-type TableDataIconProps = {
-  width: number
-  height: number
-}
+  box-shadow: ${(props) => props.isSelected && '0px 4px 4px rgba(0, 0, 0, 0.25)'};
+`
 
 export const TableDataIcon = styled.img<TableDataIconProps>`
   width: ${(props) => props.width}px;
   height: ${(props) => props.height}px;
+  margin: ${(props) => props.margin};
 `
 
 export const TableDataInfoContainer = styled.div`
@@ -36,12 +48,19 @@ export const TableDataInfoContainer = styled.div`
   margin-left: 12px;
 `
 
-export const TableDataInfoName = styled.p`
-  font-size: 18px;
-  height: 100%;
+export const TableDataViewMoreContainer = styled.div`
+  display: flex;
+  width: auto;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  white-space: nowrap;
+  user-select: none;
+
+  cursor: pointer;
 `
 
-export const TableDataInfoNumber = styled.p`
-  font-size: 12px;
+export const TableDataText = styled.p<TableDataTextProps>`
+  font-size: ${(props) => props.fontSize}px;
   height: 100%;
 `
