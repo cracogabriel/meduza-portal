@@ -12,7 +12,6 @@ export const TableContainer = styled.div`
 
   overflow-y: scroll;
   margin-bottom: 44px;
-  margin-top: 10px;
 
   flex-direction: column;
 
