@@ -3,7 +3,8 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { Member } from '../../types/GymData'
 import Header from './components/header'
 import Sidebar from './components/sidebar'
-import { HomeBackground, HomeContainer } from './style'
+import Table from './components/table'
+import { HomeBackground, HomeContainer, HomeLimiter } from './style'
 
 function Home() {
   const [loading, setLoading] = useState(true)
@@ -34,7 +35,10 @@ function Home() {
     <HomeContainer>
       <HomeBackground>
         <Sidebar />
-        <Header title={'academia dos frango'} />
+        <HomeLimiter>
+          <Header title={'academia dos frango'} />
+          <Table />
+        </HomeLimiter>
       </HomeBackground>
     </HomeContainer>
   )
