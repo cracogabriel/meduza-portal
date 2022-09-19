@@ -1,11 +1,12 @@
 import styled from 'styled-components'
+import { breakpoints } from '../../../../styles/Global'
 
 export const TableContainer = styled.div`
   display: flex;
   background-color: #d9d9d9;
   width: 100%;
   max-width: 450px;
-  min-width: 200px;
+  min-width: 380px;
 
   height: 100%;
   border-radius: 10px;
@@ -33,5 +34,9 @@ export const TableContainer = styled.div`
   }
   ::-webkit-scrollbar-thumb:hover {
     background: #555;
+  }
+
+  @media screen and (min-width: ${breakpoints.fh}px) {
+    max-width: 550px;
   }
 `

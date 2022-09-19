@@ -8,6 +8,7 @@ export const breakpoints = {
   md: 1024,
   lg: 1200,
   xl: 1400,
+  fh: 1850,
 }
 
 export var isMobile = window.innerWidth <= breakpoints.mobile

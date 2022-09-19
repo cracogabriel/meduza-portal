@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { breakpoints } from '../../../../../../styles/Global'
 
 type TableDataContainerProps = {
   isSelected?: boolean
@@ -21,16 +20,16 @@ export const TableDataContainer = styled.div<TableDataContainerProps>`
   border-radius: 10px;
   height: 72px;
   padding: 12px 20px;
-  margin: 10px 20px;
+  margin: 6px 12px;
   align-items: center;
   font-size: 16px;
 
   &:first-child {
-    margin-top: 20px;
+    margin-top: 12px;
   }
 
   &:last-child {
-    margin-bottom: 20px;
+    margin-bottom: 12px;
   }
 
   box-shadow: ${(props) => props.isSelected && '0px 4px 4px rgba(0, 0, 0, 0.25)'};

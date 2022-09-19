@@ -10,6 +10,7 @@ import { HomeBackground, HomeLimiter, TableDetailsLimiter } from './style'
 function Home() {
   const [loading, setLoading] = useState(true)
   const [members, setMembers] = useState<Member[]>([])
+  document.title = 'Home '
 
   const handleUserData = useCallback(async () => {
     try {
