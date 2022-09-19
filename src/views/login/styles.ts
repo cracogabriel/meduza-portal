@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
 export const Background = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
   width: 100vw;
   height: 100vh;
   top: 0;
@@ -13,4 +17,28 @@ export const Background = styled.div`
     rgba(0, 0, 0, 0.87) 78.09%
   );
   background-repeat: no-repeat;
+`
+
+export const ImageLogin = styled.img`
+  width: 500px;
+  height: auto;
+  object-fit: contain;
+`
+
+export const FormContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 52px;
+  width: 500px;
+  height: 460px;
+  border-radius: 10px;
+  background: linear-gradient(225.95deg, rgba(255, 255, 255, 0.212) 7.47%, rgba(255, 255, 255, 0.053) 96.58%);
+  box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(20px);
+`
+
+export const LoginLogo = styled.img`
+  width: 160px;
+  height: auto;
+  object-fit: contain;
 `
