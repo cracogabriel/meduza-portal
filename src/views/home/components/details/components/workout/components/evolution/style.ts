@@ -8,6 +8,7 @@ export const EvolutionContainer = styled.div`
   min-width: 300px;
   margin-top: 2em;
   flex-direction: column;
+
   @media screen and (min-width: ${breakpoints.xl}px) {
     max-width: 400px;
   }
@@ -58,7 +59,7 @@ export const EvolutionData = styled.div`
   padding: 0 16px;
   justify-content: space-between;
   flex-direction: row;
-  height: 34px;
+  height: 100%;
 
   &:first-child {
     margin-top: 8px;

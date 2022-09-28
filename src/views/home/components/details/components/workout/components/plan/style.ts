@@ -23,9 +23,8 @@ export const PlainBox = styled.div`
   width: 100%;
   background: #d9d9d9;
   border-radius: 10px;
-
   flex-direction: column;
-  overflow-y: scroll;
+  overflow: auto;
 
   ::-webkit-scrollbar {
     width: 4px;
@@ -88,6 +87,7 @@ export const SelectWorkountContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 4em;
+  height: 100%;
 `
 export const PlainHeader = styled.div`
   display: flex;

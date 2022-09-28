@@ -22,43 +22,15 @@ function Evolution() {
           <EvolutionData>
             <EvolutionInfo>14 de setembro de 2019</EvolutionInfo>
             <EvolutionInfo>70kg</EvolutionInfo>
-          </EvolutionData>{' '}
+          </EvolutionData>
           <EvolutionData>
             <EvolutionInfo>14 de setembro de 2019</EvolutionInfo>
             <EvolutionInfo>70kg</EvolutionInfo>
-          </EvolutionData>{' '}
+          </EvolutionData>
           <EvolutionData>
             <EvolutionInfo>14 de setembro de 2019</EvolutionInfo>
             <EvolutionInfo>70kg</EvolutionInfo>
-          </EvolutionData>{' '}
-          <EvolutionData>
-            <EvolutionInfo>14 de setembro de 2019</EvolutionInfo>
-            <EvolutionInfo>70kg</EvolutionInfo>
-          </EvolutionData>{' '}
-          <EvolutionData>
-            <EvolutionInfo>14 de setembro de 2019</EvolutionInfo>
-            <EvolutionInfo>70kg</EvolutionInfo>
-          </EvolutionData>{' '}
-          <EvolutionData>
-            <EvolutionInfo>14 de setembro de 2019</EvolutionInfo>
-            <EvolutionInfo>70kg</EvolutionInfo>
-          </EvolutionData>{' '}
-          <EvolutionData>
-            <EvolutionInfo>14 de setembro de 2019</EvolutionInfo>
-            <EvolutionInfo>70kg</EvolutionInfo>
-          </EvolutionData>{' '}
-          <EvolutionData>
-            <EvolutionInfo>14 de setembro de 2019</EvolutionInfo>
-            <EvolutionInfo>70kg</EvolutionInfo>
-          </EvolutionData>{' '}
-          <EvolutionData>
-            <EvolutionInfo>14 de setembro de 2019</EvolutionInfo>
-            <EvolutionInfo>70kg</EvolutionInfo>
-          </EvolutionData>{' '}
-          <EvolutionData>
-            <EvolutionInfo>14 de setembro de 2019</EvolutionInfo>
-            <EvolutionInfo>70kg</EvolutionInfo>
-          </EvolutionData>{' '}
+          </EvolutionData>
           <EvolutionData>
             <EvolutionInfo>14 de setembro de 2019</EvolutionInfo>
             <EvolutionInfo>70kg</EvolutionInfo>
