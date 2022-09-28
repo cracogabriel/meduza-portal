@@ -7,21 +7,7 @@ type Props = ButtonContainerProps & {
 }
 
 function Button(props: Props) {
-  return (
-    <ButtonContainer
-      width={props.width}
-      height={props.height}
-      color={props.color}
-      background={props.background}
-      borderRadius={props.borderRadius}
-      fontFamily={props.fontFamily}
-      fontSize={props.fontSize}
-      fontStyle={props.fontStyle}
-      margin={props.margin}
-    >
-      {props.content}
-    </ButtonContainer>
-  )
+  return <ButtonContainer {...props}>{props.content}</ButtonContainer>
 }
 
 export default Button

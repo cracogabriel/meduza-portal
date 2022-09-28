@@ -31,4 +31,5 @@ export const HeaderButton = styled.button`
   padding: 0 30px;
   min-width: 198px;
   width: 198px;
+  cursor: pointer;
 `

@@ -10,6 +10,7 @@ export type ButtonContainerProps = {
   fontFamily?: string
   fontStyle?: string
   fontSize?: string
+  disabled?: boolean
 }
 
 export const ButtonContainer = styled.div<ButtonContainerProps>`
