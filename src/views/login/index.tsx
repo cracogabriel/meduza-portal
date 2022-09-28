@@ -1,6 +1,6 @@
 import React from 'react'
-import Button from '../../assets/components/Button'
-import LoginInput from '../../assets/components/loginInput'
+import Button from '../../components/Button'
+import LoginInput from '../../components/loginInput'
 import { Background, FormContainer, ImageLogin, LoginLogo } from './styles'
 
 function Login() {
