@@ -1,28 +1,39 @@
-export type Member = {
-  id_person: number
-  person_name: string
-  person_email: string
-  is_active: string
-  cellphone: string
-  birthdate: string
-  height: number
-  gym_name: string
+export type Gym = {
   gym_email: string
-  id_gym: number
-  gym_id_gym: number
+  gym_name: string
+  memberList: Member[]
+}
+
+export type Member = {
+  birthdate: string
+  cellphone: string
+  height: number
+  id_person: number
+  is_active: number
+  person_email: string
+  person_name: string
+  weightList: WeightList[]
   workoutList: Workout[]
 }
 
-type Workout = {
+export type WeightList = {
+  id_weight: number
+  weight: number
+  weighted_date: string
+}
+
+export type Workout = {
   id_workout: number
-  person_id_person2: number
+  person_id_person: number
   workout_type: string
   exerciseList: Exercice[]
 }
 
 type Exercice = {
-  workout_idworkout: number
   exercise_name: string
-  quant: number
+  id_exercise: number
   metric: string
+  quant: number
+  sets: number
+  workout_id_workout: number
 }

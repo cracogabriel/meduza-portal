@@ -17,12 +17,6 @@ export const InfoContainer = styled.div`
   height: 240px;
 
   align-items: center;
-
-  @media screen and (max-width: ${breakpoints.md}px) {
-    margin-top: 10px;
-    flex-direction: column;
-    text-align: left;
-  }
 `
 
 export const DetailedContainer = styled.div`

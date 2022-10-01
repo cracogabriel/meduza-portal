@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { breakpoints } from '../../../../../../../../styles/Global'
 
 export const PlainContainer = styled.div`
@@ -21,6 +21,7 @@ export const PlainContainer = styled.div`
 export const PlainBox = styled.div`
   display: flex;
   width: 100%;
+  height: 100%;
   background: #d9d9d9;
   border-radius: 10px;
   flex-direction: column;
@@ -129,13 +130,17 @@ export const SelectWorkout = styled.div<SelectWorkoutProps>`
   height: 50px;
   width: 50px;
   min-width: 50px;
-  background-color: #515151;
+  background-color: #616161;
   border-radius: 10px;
   margin-right: 8px;
   margin-top: 5px;
+  cursor: pointer;
 
   ${(props) => props.isSelected && `min-height: 75px;`}
   ${(props) => props.isSelected && `box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);`}
+  ${(props) => props.isSelected && `background-color: #515151;`}
+  ${(props) => props.isSelected && `font-weight: bold;`}
+
 
   &:first-child {
     margin-top: 0px;

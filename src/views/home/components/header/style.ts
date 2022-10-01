@@ -29,7 +29,7 @@ export const HeaderButton = styled.button`
   border: none;
   letter-spacing: 2px;
   padding: 0 30px;
-  min-width: 198px;
-  width: 198px;
+  width: 240px;
+  font-family: 'SackersGothicStd';
   cursor: pointer;
 `

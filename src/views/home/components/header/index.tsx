@@ -1,5 +1,3 @@
-import React, { useState } from 'react'
-import RegisterMemberModal from '../../../../components/Modals/RegisterMemberModal'
 import { HeaderButton, HeaderContainer, HeaderTitle } from './style'
 
 type Props = {

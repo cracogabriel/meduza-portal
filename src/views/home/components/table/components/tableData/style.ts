@@ -23,7 +23,6 @@ export const TableDataContainer = styled.div<TableDataContainerProps>`
   margin: 6px 12px;
   align-items: center;
   font-size: 16px;
-
   &:first-child {
     margin-top: 12px;
   }

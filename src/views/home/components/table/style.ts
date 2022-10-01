@@ -40,3 +40,24 @@ export const TableContainer = styled.div`
     max-width: 550px;
   }
 `
+
+export const EmptyContainer = styled.div`
+  display: flex;
+  border-radius: 10px;
+  height: 100%;
+  padding: 12px 20px;
+  margin: 12px 12px;
+  align-items: center;
+  background: #fbfbfb;
+`
+
+export const EmptyMessage = styled.p`
+  font-size: 16px;
+  font-family: 'Graphik';
+`
+
+export const AddNewMemberButton = styled.b`
+  color: #9f4786;
+  text-decoration: underline;
+  cursor: pointer;
+`

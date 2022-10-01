@@ -1,4 +1,7 @@
+import moment from 'moment'
 import React from 'react'
+import { WeightList } from '../../../../../../../../types/GymData'
+import { AddNewMemberButton, EmptyContainer, EmptyMessage } from '../../../../../table/style'
 import {
   EvolutionContainer,
   EvolutionEdit,
@@ -9,7 +12,11 @@ import {
   EvolutionInfo,
 } from './style'
 
-function Evolution() {
+type Props = {
+  weightList?: WeightList[]
+}
+
+function Evolution({ weightList }: Props) {
   return (
     <>
       <EvolutionContainer>
@@ -19,62 +26,23 @@ function Evolution() {
         </EvolutionHeader>
 
         <EvolutionBox>
-          <EvolutionData>
-            <EvolutionInfo>14 de setembro de 2019</EvolutionInfo>
-            <EvolutionInfo>70kg</EvolutionInfo>
-          </EvolutionData>
-          <EvolutionData>
-            <EvolutionInfo>14 de setembro de 2019</EvolutionInfo>
-            <EvolutionInfo>70kg</EvolutionInfo>
-          </EvolutionData>
-          <EvolutionData>
-            <EvolutionInfo>14 de setembro de 2019</EvolutionInfo>
-            <EvolutionInfo>70kg</EvolutionInfo>
-          </EvolutionData>
-          <EvolutionData>
-            <EvolutionInfo>14 de setembro de 2019</EvolutionInfo>
-            <EvolutionInfo>70kg</EvolutionInfo>
-          </EvolutionData>
-          <EvolutionData>
-            <EvolutionInfo>14 de setembro de 2019</EvolutionInfo>
-            <EvolutionInfo>70kg</EvolutionInfo>
-          </EvolutionData>
-          <EvolutionData>
-            <EvolutionInfo>14 de setembro de 2019</EvolutionInfo>
-            <EvolutionInfo>70kg</EvolutionInfo>
-          </EvolutionData>
-          <EvolutionData>
-            <EvolutionInfo>14 de setembro de 2019</EvolutionInfo>
-            <EvolutionInfo>70kg</EvolutionInfo>
-          </EvolutionData>
-          <EvolutionData>
-            <EvolutionInfo>14 de setembro de 2019</EvolutionInfo>
-            <EvolutionInfo>70kg</EvolutionInfo>
-          </EvolutionData>
-          <EvolutionData>
-            <EvolutionInfo>14 de setembro de 2019</EvolutionInfo>
-            <EvolutionInfo>70kg</EvolutionInfo>
-          </EvolutionData>
-          <EvolutionData>
-            <EvolutionInfo>14 de setembro de 2019</EvolutionInfo>
-            <EvolutionInfo>70kg</EvolutionInfo>
-          </EvolutionData>
-          <EvolutionData>
-            <EvolutionInfo>14 de setembro de 2019</EvolutionInfo>
-            <EvolutionInfo>70kg</EvolutionInfo>
-          </EvolutionData>
-          <EvolutionData>
-            <EvolutionInfo>14 de setembro de 2019</EvolutionInfo>
-            <EvolutionInfo>70kg</EvolutionInfo>
-          </EvolutionData>
-          <EvolutionData>
-            <EvolutionInfo>14 de setembro de 2019</EvolutionInfo>
-            <EvolutionInfo>70kg</EvolutionInfo>
-          </EvolutionData>
-          <EvolutionData>
-            <EvolutionInfo>14 de setembro de 2019</EvolutionInfo>
-            <EvolutionInfo>70kg</EvolutionInfo>
-          </EvolutionData>
+          {weightList && weightList.length > 0 ? (
+            weightList.map((data, index) => {
+              return (
+                <EvolutionData>
+                  <EvolutionInfo>{data.weighted_date}</EvolutionInfo>
+                  <EvolutionInfo>{data.weight}kg</EvolutionInfo>
+                </EvolutionData>
+              )
+            })
+          ) : (
+            <EmptyContainer>
+              <EmptyMessage>
+                Este aluno não possuí nenhuma pesagem cadastrada, <AddNewMemberButton> clique aqui </AddNewMemberButton>{' '}
+                para cadastrar
+              </EmptyMessage>
+            </EmptyContainer>
+          )}
         </EvolutionBox>
       </EvolutionContainer>
     </>

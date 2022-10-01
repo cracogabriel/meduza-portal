@@ -1,23 +1,37 @@
 import React from 'react'
+import { Member } from '../../../../types/GymData'
 import TableData from './components/tableData'
-import { TableContainer } from './style'
+import { AddNewMemberButton, EmptyContainer, EmptyMessage, TableContainer } from './style'
 
-function Table() {
+type Props = {
+  selectedMember: number
+  setSelectedMember: React.Dispatch<React.SetStateAction<number>>
+  members?: Member[]
+  openCadModal: (isOpen: boolean) => void
+}
+
+function Table({ members, openCadModal, selectedMember, setSelectedMember }: Props) {
   return (
     <TableContainer>
-      <TableData key={'1'} isSelected />
-      <TableData key={'12'} />
-      <TableData key={'13'} />
-      <TableData key={'14'} />
-      <TableData key={'15'} />
-      <TableData key={'16'} />
-      <TableData key={'17'} />
-      <TableData key={'18'} />
-      <TableData key={'181'} />
-      <TableData key={'182'} />
-      <TableData key={'183'} />
-      <TableData key={'184'} />
-      <TableData key={'185'} />
+      {members && members.length > 0 ? (
+        members.map((member, index) => {
+          return (
+            <TableData
+              member={member}
+              key={index}
+              isSelected={selectedMember === member.id_person}
+              handleSelectedMember={setSelectedMember}
+            />
+          )
+        })
+      ) : (
+        <EmptyContainer>
+          <EmptyMessage>
+            Você não tem membros cadastrados,{' '}
+            <AddNewMemberButton onClick={() => openCadModal(true)}> clique aqui </AddNewMemberButton> para cadastrar
+          </EmptyMessage>
+        </EmptyContainer>
+      )}
     </TableContainer>
   )
 }

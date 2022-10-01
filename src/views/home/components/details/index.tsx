@@ -1,13 +1,17 @@
-import React from 'react'
+import { Member } from '../../../../types/GymData'
 import Info from './components/info'
 import Workout from './components/workout'
 import { InfoContainer } from './style'
 
-function Details() {
+type Props = {
+  member?: Member
+}
+
+function Details({ member }: Props) {
   return (
     <InfoContainer>
-      <Info />
-      <Workout />
+      <Info member={member} />
+      <Workout member={member} />
     </InfoContainer>
   )
 }

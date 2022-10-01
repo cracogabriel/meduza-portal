@@ -21,6 +21,7 @@ export const EvolutionContainer = styled.div`
 export const EvolutionBox = styled.div`
   display: flex;
   width: 100%;
+  height: 100%;
   background: #d9d9d9;
   border-radius: 10px;
 
@@ -63,6 +64,10 @@ export const EvolutionData = styled.div`
 
   &:first-child {
     margin-top: 8px;
+  }
+
+  &:last-child {
+    margin-bottom: 8px;
   }
 `
 
