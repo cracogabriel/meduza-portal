@@ -5,15 +5,16 @@ export type Gym = {
 }
 
 export type Member = {
-  birthdate: string
-  cellphone: string
-  height: number
-  id_person: number
-  is_active: number
-  person_email: string
-  person_name: string
-  weightList: WeightList[]
-  workoutList: Workout[]
+  person_age?: number
+  birthdate?: string
+  cellphone?: string
+  height?: number
+  id_person?: number
+  is_active?: number
+  person_email?: string
+  person_name?: string
+  weightList?: WeightList[]
+  workoutList?: Workout[]
 }
 
 export type WeightList = {

@@ -29,10 +29,15 @@ function Home() {
       const idGym = localStorage.getItem('gym')
       const response = await api.get(`/api/gym/${idGym}`)
       setGym(response.data)
-      if (response.data && response.data.memberList && response.data.memberList[0].id_person)
+      if (
+        response.data &&
+        response.data.memberList &&
+        response.data.memberList[0] &&
+        response.data.memberList[0].id_person
+      )
         setSelectedMember(response.data.memberList[0].id_person)
     } catch (error) {
-      setSnackbar({ isOpen: true, message: 'falha ao buscar dados!', severity: 'error' })
+      if (error) setSnackbar({ isOpen: true, message: 'falha ao buscar dados!', severity: 'error' })
     } finally {
       setIsLoading(false)
     }
@@ -60,7 +65,7 @@ function Home() {
             selectedMember={selectedMember}
             setSelectedMember={setSelectedMember}
           />
-          <Details member={gym?.memberList.find((member) => member.id_person === selectedMember)} />
+          <Details member={gym && gym.memberList.find((member) => member && member.id_person === selectedMember)} />
         </TableDetailsLimiter>
       </HomeLimiter>
       {isOpenModal && <RegisterMemberModal isOpenModal={isOpenModal} handleCloseModal={() => setIsOpenModal(false)} />}

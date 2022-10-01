@@ -1,9 +1,10 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Button from '../../components/Button'
 import LoginInput from '../../components/LoginInput'
 import { Background, FormContainer, ImageLogin, LoginLogo } from './styles'
+import { MD5 } from 'md5-js-tools'
 
 function Login() {
   const [email, setEmail] = useState<string>('')
@@ -17,17 +18,22 @@ function Login() {
 
   const handleLogin = async (email: string, password: string) => {
     try {
+      const md5password = MD5.generate(password)
       const response = await axios.post('http://26.181.166.34:8080/api/gym/login', {
         gym_email: email,
-        gym_password: password,
+        gym_password: md5password,
       })
+      console.log(response.data)
       localStorage.setItem('token', response.data.token)
       localStorage.setItem('gym', response.data.id_gym)
-      if (response.status === 200 || response.status === 201) navigate('/home')
-    } catch (error) {
-      console.log(error)
-    }
+      if (response.status < 400) navigate('/home')
+    } catch (error) {}
   }
+
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (token) navigate('/home')
+  }, [])
 
   const meduzaLogin = require('../../assets/images/meduzaLogin.png')
   const meduzaLoginLogo = require('../../assets/images/meduzaLoginLogo.png')

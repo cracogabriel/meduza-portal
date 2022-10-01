@@ -11,7 +11,7 @@ type Props = {
 
 function Workout({ member }: Props) {
   const [selectedWorkout, setSelectedWorkout] = useState<string>('A')
-  const workoutTypes = member?.workoutList.map((workout) => workout.workout_type)
+  const workoutTypes = member && member.workoutList && member.workoutList.map((workout) => workout.workout_type)
 
   return (
     <WorkoutContainer>
@@ -21,7 +21,13 @@ function Workout({ member }: Props) {
           selectedWorkout={selectedWorkout}
           setSelectedWorkout={setSelectedWorkout}
         />
-        <Plan workout={member?.workoutList.find((workout) => workout.workout_type === selectedWorkout)} />
+        <Plan
+          workout={
+            member &&
+            member.workoutList &&
+            member.workoutList.find((workout) => workout.workout_type === selectedWorkout)
+          }
+        />
       </WorkoutGroup>
       <Evolution weightList={member?.weightList} />
     </WorkoutContainer>

@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Button from '../../components/Button'
 import LoginInput from '../../components/LoginInput'
@@ -6,6 +7,7 @@ import { Background, FormContainer, ImageLogin, LoginLogo } from './styles'
 
 function Register() {
   const navigate = useNavigate()
+  const [name, setName] = useState<string>('')
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [confirmPassword, setConfirmPassword] = useState<string>('')
@@ -19,9 +21,24 @@ function Register() {
   const confirmPasswordError =
     password !== confirmPassword && confirmPassword.length !== 0 ? 'as senhas devem coincidir' : ''
 
-  const handleRegister = () => {
-    console.log('registrou')
+  const handleRegister = async () => {
+    try {
+      console.log(name, email, password)
+      const response = await axios.post('http://26.181.166.34:8080/api/gym/register', {
+        gym_name: name,
+        gym_email: email,
+        gym_password: password,
+      })
+      if (response.status === 200 || response.status === 201) navigate('/login')
+    } catch (error) {
+      console.log(error)
+    }
   }
+
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (token) navigate('/home')
+  }, [])
 
   const meduzaLogin = require('../../assets/images/meduzaLogin.png')
   const meduzaLoginLogo = require('../../assets/images/meduzaLoginLogo.png')
@@ -34,7 +51,14 @@ function Register() {
         <LoginLogo src={meduzaLoginLogo} onClick={() => navigate('/login')} />
         <LoginInput
           IconSrc={loginIcon}
-          margin={loginError ? '35px 0 0 0' : '50px 0 0 0'}
+          margin={'30px 0 0 0'}
+          placeholder={'nome'}
+          handleChange={setName}
+          value={name}
+        />
+        <LoginInput
+          IconSrc={loginIcon}
+          margin={loginError ? '5px 0 0 0' : '20px 0 0 0'}
           placeholder={'email'}
           handleChange={setEmail}
           value={email}
@@ -71,6 +95,7 @@ function Register() {
             loginError.length !== 0 ||
             passwordError.length !== 0 ||
             confirmPasswordError.length !== 0 ||
+            name.length === 0 ||
             password.length === 0 ||
             email.length === 0 ||
             confirmPassword.length === 0

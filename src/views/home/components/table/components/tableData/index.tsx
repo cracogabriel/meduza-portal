@@ -23,14 +23,17 @@ function TableData({ isSelected, member, handleSelectedMember }: Props) {
       <TableDataIcon src={personIcon} width={45} height={45} />
       <TableDataInfoContainer>
         <TableDataText fontSize={18}>
-          {member.person_name.length > 20 ? member.person_name.slice(0, 20) + '...' : member.person_name}
+          {member.person_name && member.person_name.length > 20
+            ? member.person_name.slice(0, 20) + '...'
+            : member.person_name}
         </TableDataText>
         {/*adicionar ... caso nome seja muito grande nao esquecer*/}
         <TableDataText fontSize={12}>
-          {member.cellphone.replace(/\D+/g, '').replace(/(\d{2})(\d{1})(\d{4})(\d{4})/, '($1) $2 $3-$4')}
+          {member.cellphone &&
+            member.cellphone.replace(/\D+/g, '').replace(/(\d{2})(\d{1})(\d{4})(\d{4})/, '($1) $2 $3-$4')}
         </TableDataText>
       </TableDataInfoContainer>
-      <TableDataViewMoreContainer onClick={() => handleSelectedMember(member.id_person)}>
+      <TableDataViewMoreContainer onClick={() => member.id_person && handleSelectedMember(member && member.id_person)}>
         <TableDataText fontSize={11}>ver mais</TableDataText>
         <TableDataIcon src={arrowIcon} width={10} height={8} margin={'0 0 0 3px'} />
       </TableDataViewMoreContainer>

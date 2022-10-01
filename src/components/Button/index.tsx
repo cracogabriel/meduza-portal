@@ -8,7 +8,7 @@ type Props = ButtonContainerProps & {
 
 function Button(props: Props) {
   return (
-    <ButtonContainer {...props} disabled={props.disabled}>
+    <ButtonContainer disabled={props.disabled} {...props}>
       {props.content}
     </ButtonContainer>
   )

@@ -40,3 +40,14 @@ export const DetailedText = styled.p<DetailedTextProps>`
   font-weight: ${(props) => props.fontWeight};
   margin: ${(props) => props.margin};
 `
+
+export const DetailedWhatsapp = styled.a<DetailedTextProps>`
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  color: black;
+  font-size: ${(props) => props.fontSize}px;
+  font-family: ${(props) => props.fontFamily};
+  font-weight: ${(props) => props.fontWeight};
+  margin: ${(props) => props.margin};
+`
