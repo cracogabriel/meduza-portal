@@ -1,8 +1,13 @@
 import React from 'react'
+import Spinner from './spinner'
 import { LoadingContainer } from './style'
 
 function Loading() {
-  return <LoadingContainer>Loading</LoadingContainer>
+  return (
+    <LoadingContainer>
+      <Spinner />
+    </LoadingContainer>
+  )
 }
 
 export default Loading

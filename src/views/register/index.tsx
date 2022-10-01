@@ -1,19 +1,27 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Button from '../../components/Button'
 import LoginInput from '../../components/LoginInput'
 import { Background, FormContainer, ImageLogin, LoginLogo } from './styles'
 
-type Props = {
-  handleLogin: (email: string, password: string) => Promise<void>
-}
-
-function Login({ handleLogin }: Props) {
+function Register() {
+  const navigate = useNavigate()
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
+  const [confirmPassword, setConfirmPassword] = useState<string>('')
+
   const emailRegex: RegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
+  const passwordRegex: RegExp = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,32}$/i
 
   const loginError = emailRegex.test(email) || email.length === 0 ? '' : 'email inválido'
-  const passwordError = ''
+  const passwordError =
+    passwordRegex.test(password) || password.length === 0 ? '' : 'a senha deve conter 8 caracteres e ao menos 1 número'
+  const confirmPasswordError =
+    password !== confirmPassword && confirmPassword.length !== 0 ? 'as senhas devem coincidir' : ''
+
+  const handleRegister = () => {
+    console.log('registrou')
+  }
 
   const meduzaLogin = require('../../assets/images/meduzaLogin.png')
   const meduzaLoginLogo = require('../../assets/images/meduzaLoginLogo.png')
@@ -23,7 +31,7 @@ function Login({ handleLogin }: Props) {
   return (
     <Background>
       <FormContainer>
-        <LoginLogo src={meduzaLoginLogo} />
+        <LoginLogo src={meduzaLoginLogo} onClick={() => navigate('/login')} />
         <LoginInput
           IconSrc={loginIcon}
           margin={loginError ? '35px 0 0 0' : '50px 0 0 0'}
@@ -34,7 +42,7 @@ function Login({ handleLogin }: Props) {
         />
         <LoginInput
           IconSrc={passwordIcon}
-          margin={'20px 0 0 0'}
+          margin={passwordError ? '5px 0 0 0' : '20px 0 0 0'}
           placeholder={'senha'}
           inputType={'password'}
           handleChange={setPassword}
@@ -42,26 +50,32 @@ function Login({ handleLogin }: Props) {
           errorMessage={passwordError}
         />
 
-        <Button
-          width={'100%'}
-          height={'36px'}
-          content={'registrar'}
-          margin={'20px 0 0 0'}
-          fontFamily={'SackersGothicStd'}
-          background={'#969596'}
-          onClick={() => console.log('registrou')}
+        <LoginInput
+          IconSrc={passwordIcon}
+          margin={confirmPasswordError ? '5px 0 0 0' : '20px 0 0 0'}
+          placeholder={'confirmar senha'}
+          inputType={'password'}
+          handleChange={setConfirmPassword}
+          value={confirmPassword}
+          errorMessage={confirmPasswordError}
         />
+
         <Button
           width={'100%'}
           height={'36px'}
-          content={'entrar'}
+          content={'cadastrar'}
           margin={'20px 0 0 0'}
           fontFamily={'SackersGothicStd'}
           background={'#9F4786'}
           disabled={
-            loginError.length !== 0 || passwordError.length !== 0 || password.length === 0 || email.length === 0
+            loginError.length !== 0 ||
+            passwordError.length !== 0 ||
+            confirmPasswordError.length !== 0 ||
+            password.length === 0 ||
+            email.length === 0 ||
+            confirmPassword.length === 0
           }
-          onClick={() => handleLogin(email, password)}
+          onClick={handleRegister}
         />
       </FormContainer>
       <ImageLogin src={meduzaLogin} />
@@ -69,4 +83,4 @@ function Login({ handleLogin }: Props) {
   )
 }
 
-export default Login
+export default Register

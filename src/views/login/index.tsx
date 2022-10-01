@@ -63,7 +63,7 @@ function Login() {
           margin={'20px 0 0 0'}
           fontFamily={'SackersGothicStd'}
           background={'#969596'}
-          onClick={() => console.log('registrou')}
+          onClick={() => navigate('/register')}
         />
         <Button
           width={'100%'}

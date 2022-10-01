@@ -1,5 +1,3 @@
-import moment from 'moment'
-import React from 'react'
 import { WeightList } from '../../../../../../../../types/GymData'
 import { AddNewMemberButton, EmptyContainer, EmptyMessage } from '../../../../../table/style'
 import {

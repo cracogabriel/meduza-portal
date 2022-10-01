@@ -1,6 +1,4 @@
 import axios, { AxiosRequestConfig } from 'axios'
-import { useContext } from 'react'
-import { ComponentContext } from '../context/ComponentContext'
 
 export const baseURL = 'http://26.181.166.34:8080'
 

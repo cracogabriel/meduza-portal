@@ -2,12 +2,14 @@ import styled, { keyframes } from 'styled-components'
 
 const bgAnimation = keyframes`
   0% {
-    background-position:100% 50%;
+    background: #fdfdfd;
+  }
+  50% {
+    background: #fdfd;
   }
   100% {
-    background-position:0 50%
+    background: #fdfdfd;
   }
-  
 `
 
 export const LoadingContainer = styled.div`
@@ -18,6 +20,6 @@ export const LoadingContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(225.95deg, rgba(255, 255, 255, 0.212) 7.47%, rgba(255, 255, 255, 0.053) 96.58%);
-  animation: ${bgAnimation} 8s infinite alternate both;
+  -webkit-animation: ${bgAnimation} 7s linear infinite alternate both;
+  animation: ${bgAnimation} 7s linear infinite alternate both;
 `

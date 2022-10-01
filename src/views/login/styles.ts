@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 export const Background = styled.div`
   display: flex;
@@ -25,6 +25,17 @@ export const ImageLogin = styled.img`
   object-fit: contain;
 `
 
+const entrance = keyframes`
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+`
+
 export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -35,6 +46,7 @@ export const FormContainer = styled.div`
   background: linear-gradient(225.95deg, rgba(255, 255, 255, 0.212) 7.47%, rgba(255, 255, 255, 0.053) 96.58%);
   box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(20px);
+  animation: ${entrance} 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 `
 
 export const LoginLogo = styled.img`
