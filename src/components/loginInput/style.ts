@@ -4,7 +4,18 @@ type LoginInputContainerProps = {
   margin?: string
 }
 
+export const ErrorMessage = styled.p`
+  font-size: 12px;
+  color: tomato;
+`
+
 export const LoginInputContainer = styled.div<LoginInputContainerProps>`
+  display: flex;
+  flex-direction: column;
+  margin: ${(props) => props.margin};
+`
+
+export const InputContainer = styled.div<LoginInputContainerProps>`
   width: 100%;
   display: flex;
   height: 36px;

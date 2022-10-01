@@ -1,6 +1,7 @@
 import { Alert, AlertColor, Snackbar } from '@mui/material'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import RegisterMemberModal from '../../components/Modals/RegisterMemberModal'
+import { ComponentContext } from '../../context/ComponentContext'
 import { api } from '../../services/api'
 import { Gym } from '../../types/GymData'
 import Details from './components/details'
@@ -22,12 +23,12 @@ function Home() {
   const [gym, setGym] = useState<Gym | undefined>(undefined)
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [selectedMember, setSelectedMember] = useState<number>(0)
+  const idGym = localStorage.getItem('gym')
 
   const fetchGym = async () => {
     try {
       setIsLoading(true)
-      const response = await api.get('/api/gym/1')
-      console.log(response.data)
+      const response = await api.get(`/api/gym/${idGym}`)
       setGym(response.data)
       if (response.data && response.data.memberList && response.data.memberList[0].id_person)
         setSelectedMember(response.data.memberList[0].id_person)

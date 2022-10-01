@@ -20,4 +20,5 @@ export const SidebarImage = styled.img<SidebarImageProps>`
   margin: 8px 0 12px 0;
   width: ${(props) => props.width}px;
   height: ${(props) => props.height}px;
+  cursor: pointer;
 `

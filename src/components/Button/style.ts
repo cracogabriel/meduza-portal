@@ -28,6 +28,8 @@ export const ButtonContainer = styled.div<ButtonContainerProps>`
   margin: ${(props) => props.margin};
 
   cursor: pointer;
+  cursor: ${(props) => props.disabled && 'auto'};
+  opacity: ${(props) => props.disabled && '0.6'};
 
   -moz-user-select: none;
   -webkit-user-select: none;

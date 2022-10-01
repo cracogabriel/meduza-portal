@@ -1,18 +1,32 @@
 import React from 'react'
-import { LoginInputContainer, LoginInputField, LoginInputIcon } from './style'
+import { LoginInputContainer, InputContainer, LoginInputField, LoginInputIcon, ErrorMessage } from './style'
 
 type Props = {
   IconSrc: string
   margin?: string
   placeholder?: string
   inputType?: 'password' | 'number'
+  value: string
+  handleChange: (e: string) => void
+  errorMessage?: string
 }
 
 function LoginInput(props: Props) {
   return (
     <LoginInputContainer margin={props.margin}>
-      <LoginInputIcon src={props.IconSrc} />
-      <LoginInputField placeholder={props.placeholder} type={props.inputType} />
+      <ErrorMessage>
+        {props.errorMessage && '*'}
+        {props.errorMessage}
+      </ErrorMessage>
+      <InputContainer>
+        <LoginInputIcon src={props.IconSrc} />
+        <LoginInputField
+          onChange={(e) => props.handleChange(e.target.value)}
+          value={props.value}
+          placeholder={props.placeholder}
+          type={props.inputType}
+        />
+      </InputContainer>
     </LoginInputContainer>
   )
 }

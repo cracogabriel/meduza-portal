@@ -1,4 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios'
+import { useContext } from 'react'
+import { ComponentContext } from '../context/ComponentContext'
 
 export const baseURL = 'http://26.181.166.34:8080'
 
@@ -7,10 +9,7 @@ export const api = axios.create({
 })
 
 api.interceptors.request.use((config: AxiosRequestConfig<any>) => {
-  //   const { token } = store.getState().user || {};
-
-  // if (token !== null && token !== undefined) {
-  if (config.headers) config.headers.token = 'SDMtwAANIHLvb56UCRJTp%N7WVot8y2w%hVK4W6LLnRZn2Ptev@tVRWW2D#bp6c0'
-  // }
+  const token = localStorage.getItem('token')
+  if (config.headers && token) config.headers.token = token
   return config
 })

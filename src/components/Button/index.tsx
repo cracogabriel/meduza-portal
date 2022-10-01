@@ -7,7 +7,11 @@ type Props = ButtonContainerProps & {
 }
 
 function Button(props: Props) {
-  return <ButtonContainer {...props}>{props.content}</ButtonContainer>
+  return (
+    <ButtonContainer {...props} disabled={props.disabled}>
+      {props.content}
+    </ButtonContainer>
+  )
 }
 
 export default Button

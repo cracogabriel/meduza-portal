@@ -19,7 +19,6 @@ type Props = {
 
 function Plan({ workout }: Props) {
   const exerciseIcon = require('../../../../../../../../assets/images/exerciseIcon.png')
-  console.log('workoutList=>', workout)
 
   return (
     <>

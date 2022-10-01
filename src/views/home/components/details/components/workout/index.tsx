@@ -12,7 +12,7 @@ type Props = {
 function Workout({ member }: Props) {
   const [selectedWorkout, setSelectedWorkout] = useState<string>('A')
   const workoutTypes = member?.workoutList.map((workout) => workout.workout_type)
-  console.log(member?.workoutList.filter((workout) => workout.workout_type === selectedWorkout))
+
   return (
     <WorkoutContainer>
       <WorkoutGroup>
