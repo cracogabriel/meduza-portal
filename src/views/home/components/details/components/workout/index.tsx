@@ -22,6 +22,7 @@ function Workout({ member }: Props) {
           setSelectedWorkout={setSelectedWorkout}
         />
         <Plan
+          member={member}
           workout={
             member &&
             member.workoutList &&

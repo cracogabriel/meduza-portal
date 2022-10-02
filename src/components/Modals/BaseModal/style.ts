@@ -55,12 +55,21 @@ export const ModalForm = styled.div`
   margin-top: 30px;
 `
 
+export const FullContainer = styled.div`
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: none;
+  position: absolute;
+`
 export const WorkoutRegisterContainer = styled.div`
   margin-top: 30px;
   flex-direction: column;
   height: 330px;
-  width: 700px;
+  width: 900px;
   display: flex;
+  margin-left: 10px;
 `
 export const WorkoutRegisterBox = styled.div`
   background: #d9d9d9;

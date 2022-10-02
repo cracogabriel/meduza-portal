@@ -43,6 +43,17 @@ function Home() {
     }
   }
 
+  const handleSnackbar = (isOpen: boolean, message: string, severity: AlertColor) => {
+    setSnackbar({ isOpen: isOpen, message: message, severity: severity })
+  }
+
+  const handleSuccess = () => {
+    setIsLoading(true)
+    setTimeout(() => {
+      fetchGym()
+    }, 2500)
+  }
+
   useEffect(() => {
     fetchGym()
   }, [])
@@ -68,7 +79,14 @@ function Home() {
           <Details member={gym && gym.memberList.find((member) => member && member.id_person === selectedMember)} />
         </TableDetailsLimiter>
       </HomeLimiter>
-      {isOpenModal && <RegisterMemberModal isOpenModal={isOpenModal} handleCloseModal={() => setIsOpenModal(false)} />}
+      {isOpenModal && (
+        <RegisterMemberModal
+          isOpenModal={isOpenModal}
+          handleSuccess={handleSuccess}
+          handleSnackbar={handleSnackbar}
+          handleCloseModal={() => setIsOpenModal(false)}
+        />
+      )}
       <Snackbar
         open={snackbar.isOpen}
         autoHideDuration={6000}

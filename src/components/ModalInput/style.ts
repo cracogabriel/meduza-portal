@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 type LoginInputContainerProps = {
   margin?: string
-  error?: string
+  error?: boolean
 }
 
 export const LoginInputContainer = styled.div<LoginInputContainerProps>`

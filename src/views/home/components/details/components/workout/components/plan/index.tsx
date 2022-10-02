@@ -1,5 +1,6 @@
-import React from 'react'
-import { Workout } from '../../../../../../../../types/GymData'
+import React, { useState } from 'react'
+import EditMemberModal from '../../../../../../../../components/Modals/EditMemberModal'
+import { Member, Workout } from '../../../../../../../../types/GymData'
 import { AddNewMemberButton, EmptyContainer, EmptyMessage } from '../../../../../table/style'
 import {
   PlainBox,
@@ -14,18 +15,20 @@ import {
 } from './style'
 
 type Props = {
+  member?: Member
   workout?: Workout
 }
 
-function Plan({ workout }: Props) {
+function Plan({ workout, member }: Props) {
   const exerciseIcon = require('../../../../../../../../assets/images/exerciseIcon.png')
+  const [isOpenModal, setIsOpenModal] = useState(false)
 
   return (
     <>
       <PlainContainer>
         <PlainHeader>
           <PlainTitle>Plano de Treino</PlainTitle>
-          <PlainEdit>editar treino</PlainEdit>
+          <PlainEdit onClick={() => setIsOpenModal(true)}>editar treino</PlainEdit>
         </PlainHeader>
 
         <PlainBox>
@@ -52,6 +55,13 @@ function Plan({ workout }: Props) {
             </EmptyContainer>
           )}
         </PlainBox>
+        {isOpenModal && member && (
+          <EditMemberModal
+            isOpenModal={isOpenModal}
+            handleCloseModal={() => setIsOpenModal(false)}
+            toEditMember={member}
+          />
+        )}
       </PlainContainer>
     </>
   )

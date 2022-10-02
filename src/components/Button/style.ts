@@ -13,7 +13,7 @@ export type ButtonContainerProps = {
   disabled?: boolean
 }
 
-export const ButtonContainer = styled.div<ButtonContainerProps>`
+export const ButtonContainer = styled.button<ButtonContainerProps>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,7 +26,8 @@ export const ButtonContainer = styled.div<ButtonContainerProps>`
   font-family: ${(props) => props.fontFamily};
   font-size: ${(props) => (props.fontSize ? props.fontSize : '14px')};
   margin: ${(props) => props.margin};
-
+  outline: none;
+  border: none;
   cursor: pointer;
   cursor: ${(props) => props.disabled && 'auto'};
   opacity: ${(props) => props.disabled && '0.6'};

@@ -8,7 +8,7 @@ type Props = {
   placeholder?: string
   inputType?: 'password' | 'number' | 'email'
   jsxIcon?: JSX.Element
-  error?: string
+  error?: boolean
   value: string
   mask?: string | (string | RegExp)[]
   maskPlaceholder?: string

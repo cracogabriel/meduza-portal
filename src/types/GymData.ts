@@ -32,6 +32,20 @@ export type MemberCad = {
   workoutList: CadWorkout[]
 }
 
+export type MemberEdit = {
+  person_age?: number
+  birthdate?: string
+  cellphone?: string
+  height?: number
+  id_person?: number
+  is_active?: number
+  person_email?: string
+  person_name?: string
+  person_password?: string
+  weightList?: WeightList[]
+  workoutList?: CadWorkout[]
+}
+
 export type WeightList = {
   id_weight: number
   weight: number
