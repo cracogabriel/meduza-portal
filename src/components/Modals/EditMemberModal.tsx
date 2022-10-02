@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import nameIcon from '../../assets/images/nameIcon.svg'
-import ModalInput from '../ModalInput'
 import SvgIcon from '../SvgIcon'
 import Modal from './BaseModal'
 import {
@@ -11,43 +9,32 @@ import {
   ExerciseData,
   ExerciseIcon,
   ExerciseInput,
-  ModalForm,
   ModalTitle,
   SelectWorkout,
   WorkoutRegisterBox,
   WorkoutRegisterContainer,
 } from './BaseModal/style'
-import emailIcon from '../../assets/images/emailIcon.svg'
-import telephoneIcon from '../../assets/images/telephoneIcon.svg'
-import heightIcon from '../../assets/images/heightIcon.svg'
-import calendarIcon from '../../assets/images/calendarIcon.svg'
-import lockIcon from '../../assets/images/lockIcon.svg'
 import plusIcon from '../../assets/images/plusIcon.svg'
 import trashIcon from '../../assets/images/trashIcon.svg'
 import editIcon from '../../assets/images/editIcon.svg'
 import exerciseIcon from '../../assets/images/exerciseIcon.png'
 import { FlexBox } from '../FlexBox/style'
 import Button from '../Button'
-import { MemberCad, CadWorkout, Workout, CadExercice, Member, MemberEdit } from '../../types/GymData'
-import axios from 'axios'
+import { CadWorkout, CadExercice, Member, MemberEdit } from '../../types/GymData'
 import { api } from '../../services/api'
+import { AlertColor } from '@mui/material'
 
 type Props = {
   toEditMember: Member
   isOpenModal: boolean
   handleCloseModal: () => void
+  handleSuccess: () => void
+  handleSnackbar: (isOpen: boolean, message: string, severity: AlertColor) => void
 }
 
 const alphabet = ['A', 'B', 'C', 'D', 'E']
 
 function EditMemberModal(props: Props) {
-  const [name, setName] = useState<string>('')
-  const [email, setEmail] = useState<string>('')
-  const [cellphone, setCellphone] = useState<string>('')
-  const [height, setHeight] = useState<string>('')
-  const [birthdate, setBirthdate] = useState<string>('')
-  const [password, setPassword] = useState<string>('')
-  const [confirmPassword, setConfirmPassword] = useState<string>('')
   const [selectedWorkout, setSelectedWorkout] = useState<CadWorkout | undefined>(
     props.toEditMember.workoutList && props.toEditMember.workoutList[0],
   )
@@ -60,16 +47,6 @@ function EditMemberModal(props: Props) {
   const [isEditingExercise, setIsEditingExercise] = useState<number | null | undefined>(0)
 
   const idGym = localStorage.getItem('gym')
-
-  const [errors, setErrors] = useState({
-    birthdate: '',
-    cellphone: '',
-    height: '',
-    person_email: '',
-    person_name: '',
-    person_password: '',
-    workoutList: '',
-  })
 
   const [member, setMember] = useState<MemberEdit>({
     birthdate: props.toEditMember.birthdate,
@@ -166,22 +143,20 @@ function EditMemberModal(props: Props) {
     setIsEditingExercise(exercise.id_exercise)
   }
 
-  const registerMember = () => {
+  const putMember = () => {
     try {
       const params = {
-        ...member,
-        birthdate: props.toEditMember.birthdate,
-        cellphone: props.toEditMember.cellphone,
-        height: Number(props.toEditMember.height),
-        person_email: props.toEditMember.person_email,
-        person_name: props.toEditMember.person_name,
-        is_active: 1,
+        person_id_person: props.toEditMember.id_person,
         id_gym: Number(idGym),
-        weightList: [],
+        workoutList: member.workoutList,
       }
-      api.post('/api/member/register', params)
+      api.put('/api/member/edit/workout', params)
     } catch (error) {
-      console.log(error)
+      props.handleSnackbar(true, 'Erro ao editar aluno!', 'error')
+    } finally {
+      props.handleSuccess()
+      props.handleSnackbar(true, 'Aluno editado com sucesso!', 'success')
+      props.handleCloseModal()
     }
   }
 
@@ -311,8 +286,7 @@ function EditMemberModal(props: Props) {
             margin='26px 0 0 0'
             fontFamily={'SackersGothicStd'}
             content={'finalizar cadastro'}
-            disabled
-            onClick={registerMember}
+            onClick={putMember}
           />
         </FlexBox>
       </>

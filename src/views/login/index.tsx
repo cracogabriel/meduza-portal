@@ -5,12 +5,21 @@ import Button from '../../components/Button'
 import LoginInput from '../../components/LoginInput'
 import { Background, FormContainer, ImageLogin, LoginLogo } from './styles'
 import { MD5 } from 'md5-js-tools'
+import { Alert, AlertColor, Snackbar } from '@mui/material'
+import Loading from '../home/components/loading'
+
+type SnackbarType = {
+  isOpen: boolean
+  message: string | null
+  severity: AlertColor | undefined
+}
 
 function Login() {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const emailRegex: RegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
-
+  const [snackbar, setSnackbar] = useState<SnackbarType>({ isOpen: false, message: null, severity: undefined })
+  const [isLoading, setIsLoading] = useState(false)
   const loginError = emailRegex.test(email) || email.length === 0 ? '' : 'email inválido'
   const passwordError = ''
 
@@ -18,16 +27,22 @@ function Login() {
 
   const handleLogin = async (email: string, password: string) => {
     try {
+      setIsLoading(true)
       const md5password = MD5.generate(password)
       const response = await axios.post('http://26.181.166.34:8080/api/gym/login', {
         gym_email: email,
         gym_password: md5password,
       })
-      console.log(response.data)
+
       localStorage.setItem('token', response.data.token)
       localStorage.setItem('gym', response.data.id_gym)
-      if (response.status < 400) navigate('/home')
-    } catch (error) {}
+      if (response.status === 200 || response.status === 201) navigate('/home')
+    } catch (error) {
+      setSnackbar({ isOpen: true, message: 'falha ao entrar!', severity: 'error' })
+      setPassword('')
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   useEffect(() => {
@@ -39,6 +54,10 @@ function Login() {
   const meduzaLoginLogo = require('../../assets/images/meduzaLoginLogo.png')
   const loginIcon = require('../../assets/images/loginIcon.png')
   const passwordIcon = require('../../assets/images/passwordIcon.png')
+
+  if (isLoading) {
+    return <Loading />
+  }
 
   return (
     <Background>
@@ -85,6 +104,21 @@ function Login() {
         />
       </FormContainer>
       <ImageLogin src={meduzaLogin} />
+      <Snackbar
+        open={snackbar.isOpen}
+        autoHideDuration={6000}
+        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+        onClose={() => setSnackbar({ ...snackbar, isOpen: false })}
+      >
+        <Alert
+          onClose={() => setSnackbar({ ...snackbar, isOpen: false })}
+          severity={snackbar.severity}
+          variant='filled'
+          sx={{ width: '100%' }}
+        >
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
     </Background>
   )
 }

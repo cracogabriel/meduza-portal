@@ -1,3 +1,4 @@
+import { AlertColor } from '@mui/material'
 import React, { useState } from 'react'
 import EditMemberModal from '../../../../../../../../components/Modals/EditMemberModal'
 import { Member, Workout } from '../../../../../../../../types/GymData'
@@ -17,9 +18,11 @@ import {
 type Props = {
   member?: Member
   workout?: Workout
+  handleSuccess: () => void
+  handleSnackbar: (isOpen: boolean, message: string, severity: AlertColor) => void
 }
 
-function Plan({ workout, member }: Props) {
+function Plan({ workout, member, handleSuccess, handleSnackbar }: Props) {
   const exerciseIcon = require('../../../../../../../../assets/images/exerciseIcon.png')
   const [isOpenModal, setIsOpenModal] = useState(false)
 
@@ -48,16 +51,15 @@ function Plan({ workout, member }: Props) {
             })
           ) : (
             <EmptyContainer>
-              <EmptyMessage>
-                Este aluno não possuí nenhum exercício no treino {workout?.workout_type},{' '}
-                <AddNewMemberButton> clique aqui </AddNewMemberButton> editar o treino atual
-              </EmptyMessage>
+              <EmptyMessage>Este aluno não possuí nenhum exercício no treino {workout?.workout_type}.</EmptyMessage>
             </EmptyContainer>
           )}
         </PlainBox>
         {isOpenModal && member && (
           <EditMemberModal
             isOpenModal={isOpenModal}
+            handleSuccess={handleSuccess}
+            handleSnackbar={handleSnackbar}
             handleCloseModal={() => setIsOpenModal(false)}
             toEditMember={member}
           />

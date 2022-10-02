@@ -1,3 +1,4 @@
+import { Alert, AlertColor, Snackbar } from '@mui/material'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -5,12 +6,19 @@ import Button from '../../components/Button'
 import LoginInput from '../../components/LoginInput'
 import { Background, FormContainer, ImageLogin, LoginLogo } from './styles'
 
+type SnackbarType = {
+  isOpen: boolean
+  message: string | null
+  severity: AlertColor | undefined
+}
+
 function Register() {
   const navigate = useNavigate()
   const [name, setName] = useState<string>('')
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [confirmPassword, setConfirmPassword] = useState<string>('')
+  const [snackbar, setSnackbar] = useState<SnackbarType>({ isOpen: false, message: null, severity: undefined })
 
   const emailRegex: RegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
   const passwordRegex: RegExp = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,32}$/i
@@ -23,7 +31,6 @@ function Register() {
 
   const handleRegister = async () => {
     try {
-      console.log(name, email, password)
       const response = await axios.post('http://26.181.166.34:8080/api/gym/register', {
         gym_name: name,
         gym_email: email,
@@ -31,6 +38,7 @@ function Register() {
       })
       if (response.status === 200 || response.status === 201) navigate('/login')
     } catch (error) {
+      setSnackbar({ isOpen: true, message: 'falha ao entrar!', severity: 'error' })
       console.log(error)
     }
   }
@@ -104,6 +112,21 @@ function Register() {
         />
       </FormContainer>
       <ImageLogin src={meduzaLogin} />
+      <Snackbar
+        open={snackbar.isOpen}
+        autoHideDuration={6000}
+        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+        onClose={() => setSnackbar({ ...snackbar, isOpen: false })}
+      >
+        <Alert
+          onClose={() => setSnackbar({ ...snackbar, isOpen: false })}
+          severity={snackbar.severity}
+          variant='filled'
+          sx={{ width: '100%' }}
+        >
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
     </Background>
   )
 }

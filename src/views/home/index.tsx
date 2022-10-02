@@ -1,5 +1,6 @@
 import { Alert, AlertColor, Snackbar } from '@mui/material'
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import RegisterMemberModal from '../../components/Modals/RegisterMemberModal'
 import { api } from '../../services/api'
 import { Gym } from '../../types/GymData'
@@ -22,11 +23,12 @@ function Home() {
   const [gym, setGym] = useState<Gym | undefined>(undefined)
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [selectedMember, setSelectedMember] = useState<number>(0)
-
+  const navigate = useNavigate()
   const fetchGym = async () => {
     try {
       setIsLoading(true)
       const idGym = localStorage.getItem('gym')
+      if (!idGym) navigate('/login')
       const response = await api.get(`/api/gym/${idGym}`)
       setGym(response.data)
       if (
@@ -76,7 +78,11 @@ function Home() {
             selectedMember={selectedMember}
             setSelectedMember={setSelectedMember}
           />
-          <Details member={gym && gym.memberList.find((member) => member && member.id_person === selectedMember)} />
+          <Details
+            handleSuccess={handleSuccess}
+            handleSnackbar={handleSnackbar}
+            member={gym && gym.memberList.find((member) => member && member.id_person === selectedMember)}
+          />
         </TableDetailsLimiter>
       </HomeLimiter>
       {isOpenModal && (

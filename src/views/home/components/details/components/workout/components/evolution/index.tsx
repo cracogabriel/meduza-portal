@@ -1,5 +1,8 @@
-import { WeightList } from '../../../../../../../../types/GymData'
-import { AddNewMemberButton, EmptyContainer, EmptyMessage } from '../../../../../table/style'
+import { AlertColor } from '@mui/material'
+import { useState } from 'react'
+import AddWeightModal from '../../../../../../../../components/Modals/AddWeightModal'
+import { Member, WeightList } from '../../../../../../../../types/GymData'
+import { EmptyContainer, EmptyMessage } from '../../../../../table/style'
 import {
   EvolutionContainer,
   EvolutionEdit,
@@ -11,16 +14,20 @@ import {
 } from './style'
 
 type Props = {
+  member?: Member
   weightList?: WeightList[]
+  handleSuccess: () => void
+  handleSnackbar: (isOpen: boolean, message: string, severity: AlertColor) => void
 }
 
-function Evolution({ weightList }: Props) {
+function Evolution({ member, weightList, handleSuccess, handleSnackbar }: Props) {
+  const [isOpenModal, setIsOpenModal] = useState(false)
   return (
     <>
       <EvolutionContainer>
         <EvolutionHeader>
           <EvolutionTitle>Evolução</EvolutionTitle>
-          <EvolutionEdit>cadastrar peso</EvolutionEdit>
+          <EvolutionEdit onClick={() => setIsOpenModal(true)}>cadastrar peso</EvolutionEdit>
         </EvolutionHeader>
 
         <EvolutionBox>
@@ -35,14 +42,20 @@ function Evolution({ weightList }: Props) {
             })
           ) : (
             <EmptyContainer>
-              <EmptyMessage>
-                Este aluno não possuí nenhuma pesagem cadastrada, <AddNewMemberButton> clique aqui </AddNewMemberButton>{' '}
-                para cadastrar
-              </EmptyMessage>
+              <EmptyMessage>Este aluno não possuí nenhuma pesagem cadastrada.</EmptyMessage>
             </EmptyContainer>
           )}
         </EvolutionBox>
       </EvolutionContainer>
+      {isOpenModal && member && (
+        <AddWeightModal
+          member={member}
+          isOpenModal={isOpenModal}
+          handleCloseModal={() => setIsOpenModal(false)}
+          handleSuccess={handleSuccess}
+          handleSnackbar={handleSnackbar}
+        />
+      )}
     </>
   )
 }

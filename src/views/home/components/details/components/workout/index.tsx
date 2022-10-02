@@ -1,3 +1,4 @@
+import { AlertColor } from '@mui/material'
 import React, { useState } from 'react'
 import { Member } from '../../../../../../types/GymData'
 import Evolution from './components/evolution'
@@ -7,9 +8,11 @@ import { WorkoutContainer, WorkoutGroup } from './style'
 
 type Props = {
   member?: Member
+  handleSuccess: () => void
+  handleSnackbar: (isOpen: boolean, message: string, severity: AlertColor) => void
 }
 
-function Workout({ member }: Props) {
+function Workout({ member, handleSuccess, handleSnackbar }: Props) {
   const [selectedWorkout, setSelectedWorkout] = useState<string>('A')
   const workoutTypes = member && member.workoutList && member.workoutList.map((workout) => workout.workout_type)
 
@@ -23,6 +26,8 @@ function Workout({ member }: Props) {
         />
         <Plan
           member={member}
+          handleSuccess={handleSuccess}
+          handleSnackbar={handleSnackbar}
           workout={
             member &&
             member.workoutList &&
@@ -30,7 +35,12 @@ function Workout({ member }: Props) {
           }
         />
       </WorkoutGroup>
-      <Evolution weightList={member?.weightList} />
+      <Evolution
+        member={member}
+        handleSuccess={handleSuccess}
+        handleSnackbar={handleSnackbar}
+        weightList={member?.weightList}
+      />
     </WorkoutContainer>
   )
 }

@@ -178,14 +178,14 @@ function RegisterMemberModal(props: Props) {
         person_password: password,
         is_active: 1,
         id_gym: Number(idGym),
-        weightList: [],
+        weightList: member.weightList || [],
       }
       api.post('/api/member/register', params)
     } catch (error) {
-      console.log(error)
+      props.handleSnackbar(true, 'Erro ao cadastrar aluno!', 'error')
     } finally {
       props.handleSuccess()
-      props.handleSnackbar(true, 'Usuário cadastrado com sucesso!', 'success')
+      props.handleSnackbar(true, 'Aluno cadastrado com sucesso!', 'success')
       props.handleCloseModal()
     }
   }
