@@ -68,9 +68,35 @@ export const WorkoutRegisterBox = styled.div`
   width: 100%;
   display: flex;
   border-radius: 10px;
+  flex-direction: column;
+  overflow-y: auto;
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: red;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 `
 
-export const AddWorkoutButton = styled.p`
+type AddWorkoutButtonDTO = {
+  disabled?: boolean
+}
+
+export const AddWorkoutButton = styled.button<AddWorkoutButtonDTO>`
   display: flex;
   justify-content: flex-end;
   font-size: 14px;
@@ -79,11 +105,17 @@ export const AddWorkoutButton = styled.p`
   color: #9f4786;
   text-decoration: underline;
   cursor: pointer;
+  border: none;
+  outline: none;
+  ${(props) => props.disabled && `color: #515151;`}
+  ${(props) => props.disabled && `cursor: auto;`}
+  ${(props) => props.disabled && `text-decoration: none;`}
 `
 
 type SelectWorkoutProps = {
   isSelected?: boolean
   isAddButton?: boolean
+  hasDeleteIcon?: boolean
 }
 
 export const SelectWorkout = styled.div<SelectWorkoutProps>`
@@ -95,13 +127,18 @@ export const SelectWorkout = styled.div<SelectWorkoutProps>`
   height: 50px;
   width: 50px;
   min-width: 50px;
-  background-color: #515151;
+  background-color: #616161;
   border-radius: 10px;
   margin-right: 8px;
   margin-top: 5px;
 
+  ${(props) => props.isSelected && ` background-color: #515151;`}
+  ${(props) => props.isSelected && ` font-weight: bold;`}
   ${(props) => props.isSelected && `min-height: 75px;`}
   ${(props) => props.isSelected && `box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);`}
+  ${(props) => props.isSelected && props.hasDeleteIcon && `min-height: 45px;`}
+  ${(props) => props.isSelected && props.hasDeleteIcon && `margin-bottom: 0;`}
+  ${(props) => props.isSelected && props.hasDeleteIcon && `border-radius: 10px 10px 0px 0px;`}
   ${(props) => props.isAddButton && `background-color: #158B28;`}
 
   cursor: pointer;
@@ -111,21 +148,74 @@ export const SelectWorkout = styled.div<SelectWorkoutProps>`
   }
 `
 
+export const DeleteWorkout = styled.div`
+  background: tomato;
+  height: 30px;
+  width: 50px;
+  display: flex;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0px 0px 10px 10px;
+  font-size: 10px;
+  cursor: pointer;
+`
+
 export const ExerciseData = styled.div`
   display: flex;
   background: #fbfbfb;
   border-radius: 10px;
-  min-height: 34px;
-  max-height: 34px;
+  height: 48px;
+  min-height: 48px;
   align-items: center;
+  position: relative;
+  width: auto;
   margin: 4px 8px;
-  width: 100%;
-
   &:first-child {
     margin-top: 8px;
   }
 `
 
+type ExerciseInputDTO = {
+  width?: string
+  margin?: string
+}
+
+export const ExerciseInput = styled.input<ExerciseInputDTO>`
+  border: none;
+  text-decoration: none;
+  margin: ${(props) => props.margin};
+  width: ${(props) => (props.width ? props.width : '200px')};
+  border-radius: 2px;
+  border-bottom: 2px solid #313131;
+  height: 26px;
+  padding: 5px 10px;
+  font-size: 14px;
+  background: #f2feff;
+  &:focus {
+    outline: none;
+  }
+`
+
+type ExerciseCreateButtonDTO = {
+  background: string
+}
+
+export const ExerciseCreateButton = styled.button<ExerciseCreateButtonDTO>`
+  position: absolute;
+  top: 0;
+  height: 100%;
+  border-radius: 0px 10px 10px 0px;
+  display: flex;
+  align-items: center;
+  color: white;
+  border: none;
+  width: 38px;
+  right: 0;
+  justify-content: center;
+  cursor: pointer;
+  background: ${(props) => props.background};
+`
 export const ExerciseIcon = styled.img`
   width: 34px;
   height: 34px;
@@ -134,4 +224,13 @@ export const ExerciseIcon = styled.img`
 
 export const ExerciseInfo = styled.p`
   font-size: 13px;
+  width: 100%;
+`
+
+export const ConfirmContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0px 60px 0 10px;
 `

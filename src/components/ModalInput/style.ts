@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 type LoginInputContainerProps = {
   margin?: string
+  error?: string
 }
 
 export const LoginInputContainer = styled.div<LoginInputContainerProps>`
@@ -12,6 +13,27 @@ export const LoginInputContainer = styled.div<LoginInputContainerProps>`
   border-bottom: 2px solid #000000;
   align-items: center;
   margin: ${(props) => props.margin};
+  border-bottom: ${(props) => props.error && '2px solid tomato'};
+
+  & > input {
+    border: none;
+    font-size: 16px;
+
+    align-items: center;
+    width: 100%;
+    color: #000000;
+    background: transparent;
+    padding: 0 8px;
+
+    &::placeholder {
+      color: #626262;
+    }
+
+    &:focus {
+      border: none;
+      outline: none;
+    }
+  }
 `
 export const LoginInputField = styled.input`
   border: none;
