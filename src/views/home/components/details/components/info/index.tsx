@@ -31,7 +31,8 @@ function Info({ member }: Props) {
             {member &&
               member.cellphone &&
               member.cellphone.replace(/\D+/g, '').replace(/(\d{2})(\d{1})(\d{4})(\d{4})/, '($1) $2 $3-$4')}
-            <SvgIcon width={'20px'} margin='0 0 3px 4px' src={whatsappIcon} />
+            <SvgIcon width={'18px'} margin='0 0 3px 4px' src={whatsappIcon} />
+            <p>abrir whatsapp</p>
           </DetailedWhatsapp>
         )}
 

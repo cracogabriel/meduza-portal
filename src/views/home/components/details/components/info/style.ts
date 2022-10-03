@@ -50,4 +50,11 @@ export const DetailedWhatsapp = styled.a<DetailedTextProps>`
   font-family: ${(props) => props.fontFamily};
   font-weight: ${(props) => props.fontWeight};
   margin: ${(props) => props.margin};
+  & > p {
+    position: relative;
+    color: #25d366;
+    font-size: 13px;
+    margin-top: 5px;
+    text-decoration: underline;
+  }
 `
