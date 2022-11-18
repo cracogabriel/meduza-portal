@@ -2,11 +2,11 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Button from '../../components/Button'
-import LoginInput from '../../components/LoginInput'
 import { Background, FormContainer, ImageLogin, LoginLogo } from './styles'
 import { MD5 } from 'md5-js-tools'
 import { Alert, AlertColor, Snackbar } from '@mui/material'
 import Loading from '../home/components/loading'
+import LoginInput from '../../components/LoginInput'
 
 type SnackbarType = {
   isOpen: boolean
