@@ -6,7 +6,7 @@ import { Background, FormContainer, ImageLogin, LoginLogo } from './styles'
 import { MD5 } from 'md5-js-tools'
 import { Alert, AlertColor, Snackbar } from '@mui/material'
 import Loading from '../home/components/loading'
-import LoginInput from '../../components/LoginInput'
+import LoginInput from '../../components/InputText'
 
 type SnackbarType = {
   isOpen: boolean

@@ -3,7 +3,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Button from '../../components/Button'
-import LoginInput from '../../components/LoginInput'
+import LoginInput from '../../components/InputText'
 import { Background, FormContainer, ImageLogin, LoginLogo } from './styles'
 
 type SnackbarType = {
