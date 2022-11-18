@@ -1,5 +1,5 @@
 import React from 'react'
-import { LoginInputContainer, InputContainer, LoginInputField, LoginInputIcon, ErrorMessage } from './style'
+import { ErrorMessage, InputContainer, LoginInputContainer, LoginInputField, LoginInputIcon } from './styles'
 
 type Props = {
   IconSrc: string

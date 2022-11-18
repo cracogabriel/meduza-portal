@@ -2,7 +2,7 @@ import { AlertColor } from '@mui/material'
 import React, { useState } from 'react'
 import EditMemberModal from '../../../../../../../../components/Modals/EditMemberModal'
 import { Member, Workout } from '../../../../../../../../types/GymData'
-import { AddNewMemberButton, EmptyContainer, EmptyMessage } from '../../../../../table/style'
+import { EmptyContainer, EmptyMessage } from '../../../../../table/style'
 import {
   PlainBox,
   PlainContainer,
